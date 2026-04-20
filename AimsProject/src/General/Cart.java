@@ -14,25 +14,38 @@ public class Cart {
         qtyOrdered += 1;
         System.out.println("The disc has been added");
     }
-    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
-        if(dvdList == null){
-            System.out.println("Input list is null");
-            return;
-        }
-        for(int i = 0; i < dvdList.length;i++) {
-            if(qtyOrdered == MAX_NUMBER_ORDERED){
-                System.out.println("The cart is full !!");
+//    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList){
+//        if(dvdList == null){
+//            System.out.println("Input list is null");
+//            return;
+//        }
+//        for(int i = 0; i < dvdList.length;i++) {
+//            if(qtyOrdered == MAX_NUMBER_ORDERED){
+//                System.out.println("The cart is full !!");
+//                break;
+//            }
+//            if(dvdList[i] == null) continue;
+//            itemsOrdered[qtyOrdered] = dvdList[i];
+//            qtyOrdered += 1;
+//        }
+//        System.out.println("Disc list has been added");
+//    }
+
+    public void addDigitalVideoDisc(DigitalVideoDisc... dvds) {
+        for (DigitalVideoDisc disc : dvds) {
+            if (qtyOrdered < MAX_NUMBER_ORDERED) {
+                itemsOrdered[qtyOrdered] = disc;
+                qtyOrdered++;
+                System.out.println("The disc \"" + disc.getTitle() + "\" has been added.");
+            } else {
+                System.out.println("The cart is almost full. Cannot add \"" + disc.getTitle() + "\".");
                 break;
             }
-            if(dvdList[i] == null) continue;
-            itemsOrdered[qtyOrdered] = dvdList[i];
-            qtyOrdered += 1;
         }
-        System.out.println("Disc list has been added");
     }
 
     public void addDigitalVideoDisc(DigitalVideoDisc dvd1,DigitalVideoDisc dvd2){
-
+        // ?????
     }
     public void removeDigitalVideoDisc(DigitalVideoDisc disc){
         boolean found = false;
