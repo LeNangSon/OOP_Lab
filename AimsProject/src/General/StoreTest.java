@@ -14,5 +14,9 @@ public class StoreTest {
         Apple_Music_Store.addDVD(dvd3);
 
         Apple_Music_Store.viewCart1();
+
+        Apple_Music_Store.removeDVD(dvd2);
+
+        Apple_Music_Store.viewCart1();
     }
 }
