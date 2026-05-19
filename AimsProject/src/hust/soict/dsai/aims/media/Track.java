@@ -16,6 +16,7 @@ public class Track implements Playable {
         this.length = length;
     }
 
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

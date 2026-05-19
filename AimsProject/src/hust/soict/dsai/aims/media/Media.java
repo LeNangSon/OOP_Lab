@@ -44,6 +44,7 @@ public abstract class Media {
         return this.title.toLowerCase().contains(title.toLowerCase());
     }
 
+
     public static final Comparator<Media> COMPARE_BY_TITLE_COST =
             Comparator.comparing(Media::getTitle)
                     .thenComparing(Media::getCost);

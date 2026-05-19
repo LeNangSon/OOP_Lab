@@ -16,6 +16,7 @@ public class Disc extends Media {
         this.length = length;
         this.director = director;
     }
+
     public Disc(){
         super();
     }
