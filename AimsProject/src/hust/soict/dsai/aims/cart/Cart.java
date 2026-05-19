@@ -1,15 +1,12 @@
 package hust.soict.dsai.aims.cart;
 
 import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import java.util.ArrayList;
 
 public class Cart {
     public static final int MAX_NUMBER_ORDERED = 20;
     private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
-
-    public void addDigitalVideoDisc(Media newMedia) {
-        addMedia(newMedia);
-    }
 
     public void addMedia(Media newMedia){
         if(itemsOrdered.size() == MAX_NUMBER_ORDERED){
@@ -61,6 +58,18 @@ public class Cart {
         System.out.println("***************************************************");
     }
 
+    public java.util.ArrayList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
+
+    public void print() {
+        viewCart2();
+    }
+
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd) {
+        addMedia(dvd);
+    }
+
     public void searchById(int id) {
         boolean matchFound = false;
         for (int i = 0; i < itemsOrdered.size(); i++) {
@@ -75,12 +84,28 @@ public class Cart {
             System.out.println("No match found for ID: " + id);
         }
     }
-    public void searchByTitle(String title) {
-        boolean matchFound = false;
-        System.out.println("Search results for title: \"" + title + "\"");
+    public Media searchByTitle(String title) {
+        if (title == null || title.trim().isEmpty()) return null;
         for (int i = 0; i < itemsOrdered.size(); i++) {
             if (itemsOrdered.get(i).isMatch(title)) {
-                System.out.println(itemsOrdered.get(i).toString());
+                System.out.println("Found: " + itemsOrdered.get(i).toString());
+                return itemsOrdered.get(i);
+            }
+        }
+        System.out.println("No match found for title: \"" + title + "\"");
+        return null;
+    }
+
+    public void filterById(int id) {
+        searchById(id);
+    }
+
+    public void filterByTitle(String title) {
+        boolean matchFound = false;
+        System.out.println("Filter results for title: \"" + title + "\"");
+        for (Media m : itemsOrdered) {
+            if (m.isMatch(title)) {
+                System.out.println(m.toString());
                 matchFound = true;
             }
         }

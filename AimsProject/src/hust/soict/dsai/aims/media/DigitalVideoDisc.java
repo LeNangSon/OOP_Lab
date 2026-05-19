@@ -14,6 +14,7 @@ public class DigitalVideoDisc extends Disc implements Playable {
         return length;
     }
 
+
     public boolean isMatch(String title) {
         if (title == null || title.trim().isEmpty()) {
             return false;
@@ -41,11 +42,15 @@ public class DigitalVideoDisc extends Disc implements Playable {
         nbDigitalVideoDiscs++;
     }
 
+    public DigitalVideoDisc(int id, String title, String category, float cost, String director, int length) {
+        super(id, title, category, cost);
+        this.director = director;
+        this.length = length;
+        nbDigitalVideoDiscs++;
+    }
+
     public DigitalVideoDisc(String title, String category, float cost) {
         this(title);
-        this.setCategory(category);
-        this.setCost(cost);
-
     }
     public DigitalVideoDisc(String title, String category, String director, float cost) {
         this(title, category, cost);
