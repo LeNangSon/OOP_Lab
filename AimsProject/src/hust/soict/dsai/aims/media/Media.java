@@ -1,36 +1,38 @@
 package hust.soict.dsai.aims.media;
 
+import java.util.Comparator;
+
 public abstract class Media {
-    private static int nbMedia = 0;
     private int id;
     private String title;
     private String category;
     private float cost;
 
-    public Media() {
-        this.id = ++nbMedia;
-    }
+    protected Media() {}
 
-    protected void setCategory(String category) {
+    protected Media(int id, String title, String category, float cost) {
+        this.id = id;
+        this.title = title;
         this.category = category;
-    }
-
-    protected void setCost(float cost) {
         this.cost = cost;
     }
 
     public int getId() {
         return id;
     }
+
     public String getCategory(){
         return category;
     }
+
     public String getTitle() {
         return title;
     }
+
     public float getCost() {
         return cost;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -42,22 +44,11 @@ public abstract class Media {
         return this.title.toLowerCase().contains(title.toLowerCase());
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST =
+            Comparator.comparing(Media::getTitle)
+                    .thenComparing(Media::getCost);
 
-        if (obj == null || !(obj instanceof Media)) {
-            return false;
-        }
-
-        Media other = (Media) obj;
-
-        if (this.getTitle() != null && this.getTitle().equals(other.getTitle())) {
-            return true;
-        }
-
-        return false;
-    }
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE =
+            Comparator.comparing(Media::getCost)
+                    .thenComparing(Media::getTitle);
 }

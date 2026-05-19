@@ -1,10 +1,10 @@
 package hust.soict.dsai.test.store;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Store Apple_Music_Store = new Store();
 
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
